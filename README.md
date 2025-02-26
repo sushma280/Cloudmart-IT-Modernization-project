@@ -32,6 +32,9 @@ Tools & Technologies: Terraform, AWS CLI, Claude AI
 6. Created and Applied Terraform Configuration
 7. Created DynamoDB Tables for CloudMart
 
+![Screenshot 2025-02-26 085625](https://github.com/user-attachments/assets/2bdc78ee-def5-495f-a036-398f6edef58c)
+
+
 Set up Terraform, launched an EC2 instance, installed Terraform, and created AWS resources (S3, DynamoDB). 
 
 Day 1 was focused on infrastructure automation using Terraform and AI-driven assistance.
