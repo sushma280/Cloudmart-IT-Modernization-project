@@ -1,0 +1,125 @@
+# Create an ECR Repository for the Backend and upload the Docker image to it
+Repository name: cloudmart-backend
+
+# Switch to backend folder
+cd ../..
+cd challenge-day2/backend
+
+# ECR steps to build Docker image
+# Create a Kubernetes deployment file (YAML) for the Backend
+cd ../..
+cd challenge-day2/backend
+nano cloudmart-backend.yaml
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudmart-backend-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloudmart-backend-app
+  template:
+    metadata:
+      labels:
+        app: cloudmart-backend-app
+    spec:
+      serviceAccountName: cloudmart-pod-execution-role
+      containers:
+      - name: cloudmart-backend-app
+        image: public.ecr.aws/l4c0j8h9/cloudmart-backend:latest
+        env:
+        - name: PORT
+          value: "5000"
+        - name: AWS_REGION
+          value: "us-east-1"
+        - name: BEDROCK_AGENT_ID
+          value: "xxxxxx"
+        - name: BEDROCK_AGENT_ALIAS_ID
+          value: "xxxx"
+        - name: OPENAI_API_KEY
+          value: "xxxxxx"
+        - name: OPENAI_ASSISTANT_ID
+          value: "xxxx"
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: cloudmart-backend-app-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: cloudmart-backend-app
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+
+# Deploy the Backend on Kubernetes
+kubectl apply -f cloudmart-backend.yaml
+
+# Monitor the status of objects being created and obtain the public IP generated for the API
+kubectl get pods
+kubectl get deployment
+kubectl get service
+
+
+
+# Frontend Deployment on Kubernetes
+# Change the Frontend's .env file to point to the API URL created within Kubernetes obtained by the kubectl get service command
+
+cd ../challenge-day2/frontend
+nano .env
+# Content of .env:
+VITE_API_BASE_URL=http://<your_url_kubernetes_api>:5000/api
+
+# Create an ECR Repository for the Frontend and upload the Docker image to it
+Repository name: cloudmart-frontend
+
+# Follow the ECR steps to build your Docker image
+# Create a Kubernetes deployment file (YAML) for the Frontend
+
+nano cloudmart-frontend.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudmart-frontend-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloudmart-frontend-app
+  template:
+    metadata:
+      labels:
+        app: cloudmart-frontend-app
+    spec:
+      serviceAccountName: cloudmart-pod-execution-role
+      containers:
+      - name: cloudmart-frontend-app
+        image: public.ecr.aws/l4c0j8h9/cloudmart-frontend:latest
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: cloudmart-frontend-app-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: cloudmart-frontend-app
+  ports:
+    - protocol: TCP
+      port: 5001
+      targetPort: 5001
+
+# Deploy the Frontend on Kubernetes
+kubectl apply -f cloudmart-frontend.yaml
+
+# Monitor the status of objects being created and obtain the public IP generated for the API
+kubectl get pods
+kubectl get deployment
+kubectl get service
