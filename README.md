@@ -105,6 +105,7 @@ Verified service IP for frontend access
 
 Challenges : ⚠️ Faced issues with permissions while accessing EKS, resolved by configuring eksctl
 
+![image](https://github.com/user-attachments/assets/4b427709-4d9d-4b4b-ba2d-f1708ce4ee60)
 
 
 
