@@ -53,18 +53,13 @@ I worked on setting up Docker and running containerized applications for CloudMa
 
 **Backend**:
 Downloaded backend source code.
-
 Created .env file with API keys & configurations.
-
 Wrote a Dockerfile for building the backend container.
-
 Built and tested the container.
 
 **Frontend**:
 Downloaded frontend source code.
-
 Created a Dockerfile for building the frontend container.
-
 Built and tested the container.
 
 **Part 2: Kubernetes Deployment on AWS EKS**
@@ -73,6 +68,7 @@ Worked on setting up a Kubernetes cluster using AWS EKS and deployed the CloudMa
 
 ✅ Installed Docker on EC2 Instance
 ✅ Created Docker Images for CloudMart Backend & Frontend
+
 **Backend:**
 
 Downloaded backend source code.
@@ -82,9 +78,9 @@ Built and tested the container.
 
 **Frontend:**
 
-Downloaded frontend source code
-Created a Dockerfile for building the frontend container
-Built and tested the container
+Downloaded frontend source code.
+Created a Dockerfile for building the frontend container.
+Built and tested the container.
 
 🛠️ Part 2: Kubernetes Deployment on AWS EKS
 set up a Kubernetes cluster using AWS EKS and deployed the CloudMart application
@@ -97,23 +93,16 @@ Installed eksctl and kubectl
 **Backend:**
 
 Pushed Docker image to AWS ECR.
-
 Created cloudmart-backend.yaml for Kubernetes deployment.
-
 Applied deployment.
-
 Verified pod, deployment, and service status.
 
 **Frontend:**
 
 Updated .env to point to Kubernetes backend API.
-
 Pushed Docker image to AWS ECR.
-
 Created cloudmart-frontend.yaml for Kubernetes deployment.
-
 Applied deployment.
-
 Verified service IP for frontend access.
 
 
