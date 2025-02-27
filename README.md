@@ -42,4 +42,31 @@ Set up Terraform, launched an EC2 instance, installed Terraform, and created AWS
 Day 1 was focused on infrastructure automation using Terraform and AI-driven assistance.
 
 
+**DAY 2 - Docker & Kubernetes Implementation**
+
+**Part 1: Docker Setup on EC2**
+
+I worked on setting up Docker and running containerized applications for CloudMart.
+
+1. Installed Docker on EC2 Instance
+2. Created Docker Images for CloudMart Backend & Frontend
+
+**Backend**:
+Downloaded backend source code
+Created .env file with API keys & configurations
+Wrote a Dockerfile for building the backend container
+Built and tested the container
+
+**Frontend**:
+Downloaded frontend source code
+Created a Dockerfile for building the frontend container
+Built and tested the container
+
+**Part 2: Kubernetes Deployment on AWS EKS**
+
+Worked on setting up a Kubernetes cluster using AWS EKS and deployed the CloudMart application.
+
+
+
+
 
